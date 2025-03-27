@@ -15,8 +15,8 @@ connectDB();
 
 const app = express();
 app.use(cors({
-  origin: 'http://localhost:5173',
-  credentials: true, // if you're using cookies or HTTP auth
+  origin: 'https://cs-class.vercel.app/',
+  credentials: true,
 }));
 
 app.use(express.json());
