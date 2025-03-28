@@ -14,8 +14,22 @@ dotenv.config();
 connectDB();
 
 const app = express();
+const allowedOrigins = [
+  'https://cs-class.vercel.app',
+  'http://localhost:5173', // for development
+  'https://another-frontend.com'
+];
+
 app.use(cors({
-  origin: 'https://cs-class.vercel.app',
+  origin: function (origin, callback) {
+    // allow requests with no origin (like mobile apps or curl)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    } else {
+      return callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
 }));
 
