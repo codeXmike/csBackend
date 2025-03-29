@@ -1,8 +1,9 @@
 import Material from '../models/Material.js';
 
 export const uploadMaterial = async (req, res) => {
-    const { courseName, courseCode } = req.body;
+    const { courseName, courseCode, semester, level } = req.body;
     const file = req.file;
+    const fileUrl = req.file.path;
   
     if (!file) {
       return res.status(400).json({ message: 'No file uploaded' });
@@ -13,7 +14,9 @@ export const uploadMaterial = async (req, res) => {
         courseName,
         courseCode,
         fileName: file.originalname,
-        filePath: file.path,
+        level,
+        semester,
+        fileUrl,
       });
   
       await material.save();

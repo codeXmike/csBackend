@@ -16,7 +16,9 @@ const materialSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    filePath: {
+    level: { type: String, required: true, },
+    semester: { type: String, required: true, },
+    fileUrl: {
       type: String,
       required: true,
     },
