@@ -1,5 +1,19 @@
 import Material from '../models/Material.js';
 
+export const downloadMaterial = async (req, res) => {
+  const material = await Material.findById(req.params.id);
+  if (!material) return res.status(404).send('File not found');
+
+  const response = await axios({
+    url: material.fileUrl,
+    method: 'GET',
+    responseType: 'stream',
+  });
+
+  res.setHeader('Content-Disposition', `attachment; filename="${material.title}"`);
+  response.data.pipe(res);
+}
+
 export const uploadMaterial = async (req, res) => {
     const { courseName, courseCode, semester, level } = req.body;
     const file = req.file;

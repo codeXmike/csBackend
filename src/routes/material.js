@@ -12,6 +12,7 @@ const upload = multer({ storage }); // ✅ now uses Cloudinary
 router.post('/upload', protect, upload.single('file'), uploadMaterial);
 
 
+router.get('/download/:id', getAllMaterials);
 router.get('/', getAllMaterials);
 router.get('/course/:courseCode', getMaterialsByCourse);
 
