@@ -14,7 +14,9 @@ const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
     folder: 'course-materials',
-    resource_type: 'auto',
+    resource_type: 'raw',
+    format: (req, file) => file.originalname.split('.').pop(), // preserve file extension
+    public_id: (req, file) => file.originalname.split('.')[0]
   },
 });
 
