@@ -16,6 +16,7 @@ connectDB();
 const app = express();
 const allowedOrigins = [
   'https://cs-class.vercel.app',
+  'https://cs-class.vercel.app/',
   'http://localhost:5174',
   'http://localhost:5173'
 ];
