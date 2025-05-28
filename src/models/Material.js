@@ -16,9 +16,23 @@ const materialSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    level: { type: String, required: true, },
-    semester: { type: String, required: true, },
+    level: {
+      type: String,
+      required: true,
+    },
+    semester: {
+      type: String,
+      required: true,
+    },
     fileUrl: {
+      type: String,
+      required: true,  // URL from Cloudinary
+    },
+    cloudinaryPublicId: {
+      type: String,
+      required: true,  // Cloudinary public ID
+    },
+    mimetype: {
       type: String,
       required: true,
     },
@@ -27,4 +41,5 @@ const materialSchema = new mongoose.Schema(
 );
 
 const Material = mongoose.model('Material', materialSchema);
+
 export default Material;

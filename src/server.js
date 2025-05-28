@@ -16,13 +16,12 @@ connectDB();
 const app = express();
 const allowedOrigins = [
   'https://cs-class.vercel.app',
-  'http://localhost:5173', // for development
-  'https://another-frontend.com'
+  'http://localhost:5174',
+  'http://localhost:5173'
 ];
 
 app.use(cors({
   origin: function (origin, callback) {
-    // allow requests with no origin (like mobile apps or curl)
     if (!origin) return callback(null, true);
     if (allowedOrigins.includes(origin)) {
       return callback(null, true);
